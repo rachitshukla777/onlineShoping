@@ -15,21 +15,32 @@
 <head>
 
 <meta charset="utf-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
+<meta name="_csrf" content="${_csrf.token}">
+<meta name="_csrf_header" content="${_csrf.headerName}">
 
-<title>OnlineShoping - ${title}</title>
+<title>Online Shopping - ${title}</title>
 
-<!-- Bootstrap core CSS -->
+<script>
+	window.menu = '${title}';
+	
+	window.contextRoot = '${contextRoot}'
+	
+</script>
+<!-- Bootstrap Core CSS -->
 <link href="${css}/bootstrap.min.css" rel="stylesheet">
+ 
+<!-- Bootstrap Readable Theme -->
+<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet"> 
+
+<!-- Bootstrap DataTables -->
+ <link href="${css}/dataTables.bootstrap.css" rel="stylesheet">  
 
 <!-- Custom styles for this template -->
-<%-- <link href="${css}/shop-homepage.css" rel="stylesheet"> --%>
-
-<!-- Bootstrap Readable Theme -->
-<link href="${css}/bootstrap-readable-theme.css" rel="stylesheet">
+ <link href="${css}/shop-homepage.css" rel="stylesheet"> 
 
 </head>
 
@@ -59,11 +70,17 @@
 				<%@include file="contact.jsp"%>
 			</c:if>
 
-             <!-- Load only when user clicks contact -->
-			<c:if test="${userClickAllProducts == true or userClickCategoryProducts == true }">
+			<!-- Load only when user clicks contact -->
+			<c:if
+				test="${userClickAllProducts == true or userClickCategoryProducts == true }">
 				<%@include file="listProducts.jsp"%>
-			</c:if>	
-			
+			</c:if>
+            
+            <!-- Load only when user clicks single product -->
+			<c:if
+				test="${userClickShowProduct == true  }">
+				<%@include file="singleProduct.jsp"%>
+			</c:if>
 
 		</div>
 
@@ -71,14 +88,27 @@
 		<!-- Footer -->
 		<%@include file="./shared/footer.jsp"%>
 
-		<!-- Bootstrap core JavaScript -->
-		<script src="${js}/jquery.min.js"></script>
-		<script src="${js}/bootstrap.bundle.min.js"></script>
+	 
+		<!-- jQuery -->
+		<script src="${js}/jquery.min.js"></script> 
+		
+		<!-- Bootstrap Core JavaScript -->
+		 <script src="${js}/bootstrap.bundle.min.js"></script>
 
+		<%-- <script src="${js}/jquery.validate.js"></script> --%>
 
+		
+		
+		 <!-- DataTable Plugin -->
+		<script src="${js}/jquery.dataTables.js"></script>
+		
+		<!-- DataTable Bootstrap Script -->
+		<script src="${js}/dataTables.bootstrap.js"></script>
+		
+	
+		
 		<!-- Self coded javascript -->
 		<script src="${js}/myapp.js"></script>
-
 	</div>
 </body>
 
