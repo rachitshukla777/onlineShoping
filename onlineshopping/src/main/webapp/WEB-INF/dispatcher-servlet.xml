@@ -10,7 +10,9 @@
      http://www.springframework.org/schema/mvc
     http://www.springframework.org/schema/mvc/spring-mvc.xsd          
     ">
-	<context:component-scan base-package="com.itrac.onlineshopping" />
+	
+	
+	<context:component-scan base-package="com.itrac.onlineshopping"/>
 
 	<bean id="viewResolver"
 		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -25,7 +27,8 @@
 		class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
     
   <!-- Loading static resources -->
-	<mvc:annotation-driven />
+	 
+	 <mvc:annotation-driven/>
 	
 	<mvc:resources location="/assets/" mapping="/resources/**" />
 	
